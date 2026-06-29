@@ -226,7 +226,7 @@ function setStatus(d){
 function renderList(d){
   const body=document.getElementById('listBody');
   body.innerHTML='';
-  const msgs=d.meldungen||[];
+  const msgs=(d.meldungen||[]).slice().sort((a,b)=>(b.in_city?1:0)-(a.in_city?1:0));
   document.getElementById('listHead').textContent=`Meldungen (${msgs.length})`;
   if(msgs.length===0){body.innerHTML='<div style="padding:20px;text-align:center;color:#556;font-size:13px">Keine Meldungen · alle Strecken frei</div>';}
   msgs.forEach((m,i)=>{
